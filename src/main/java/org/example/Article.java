@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Map;
+
 public class Article {
     private int id;
     private String regDate;
@@ -19,6 +21,19 @@ public class Article {
         this.id = id;
         this.title = title;
         this.body = body;
+    }
+
+    public Article(Map<String, Object> articleMap) { // 아티클이 바로 알아먹기 위해선
+        this.id = (int) articleMap.get("id"); // <- 이런 과정이 필요하다
+        this.regDate = (String) articleMap.get("regDate");
+        this.updateDate = (String) articleMap.get("updateDate");
+        this.title = (String) articleMap.get("title");
+        this.body = (String) articleMap.get("body");
+
+        //맨위의 아티클과 똑같음
+        //다만 가공안된 거라 map에서 끄집어 내야함...
+        //앞 가로 안에 있는 거 - 강제형변환
+        //오브젝트로 넘어왔기 때문에 강제형변환이 필요
     }
 
     @Override
